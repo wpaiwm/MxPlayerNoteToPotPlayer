@@ -17,8 +17,8 @@ function createWindow() {
             webSecurity: false,
         },
     });
-
     mainWindow.loadFile('index.html');
+    mainWindow.setMenu(null);
 }
 
 app.whenReady().then(createWindow);
@@ -47,15 +47,18 @@ const readAndWriteFile = async () => {
 
         const bookmarkRegex = /<bookmark name="(.*?)" position="(.*?)" \/>/g;
         let match;
-        let output = '';
+        let output = '[Bookmark]\n';
+        let i = 0
 
         while ((match = bookmarkRegex.exec(xmlData)) !== null) {
             const name = match[1];
-            const position = match[2];
-            output += `Name: ${name}, Position: ${position}\n`;
+            let position = match[2];
+            position = position * 1000;
+            output += `${i}=${position}*${name}*\n`;
+            i++;
         }
-
-        fs.writeFileSync('output.txt', output);
+        fs.writeFileSync('./output.pbf', output);
+        mainWindow.webContents.send('fileWriteFinished', 'fileWriteFinished');
     }
 };
 

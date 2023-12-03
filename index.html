@@ -9,10 +9,12 @@
 
 <script>
     const { ipcRenderer } = require('electron');
-
     document.getElementById('selectFile').addEventListener('click', async () => {
         await ipcRenderer.invoke('readAndWriteFile');
-        // alert('文件已转换，请查看 output.txt');
+    });
+    ipcRenderer.on('fileWriteFinished', (event, message) => {
+        // console.log('文件已转换，请查看 output.txt')
+        alert('文件已转换，请查看 output.pbf');
     });
 </script>
 </body>

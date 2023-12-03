@@ -6,7 +6,7 @@
     "dev": "electron --inspect-brk .",
     "start": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "buildProd": "electron-builder"
   },
   "dependencies": {
   },
