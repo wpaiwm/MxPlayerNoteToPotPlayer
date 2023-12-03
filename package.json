@@ -1,0 +1,28 @@
+{
+  "name": "MxPlayerNoteToPotPlayer",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron --inspect-brk .",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "electron-builder": "^24.9.1",
+    "electron": "^16.0.0"
+  },
+  "build": {
+    "appId": "com.yourname.your-electron-app",
+    "productName": "YourElectronApp",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "index.html"
+    ]
+  }
+}

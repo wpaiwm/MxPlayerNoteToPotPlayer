@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XML 文件转换工具</title>
+</head>
+<body>
+<button id="selectFile">选择文件并转换</button>
+
+<script>
+    const { ipcRenderer } = require('electron');
+
+    document.getElementById('selectFile').addEventListener('click', async () => {
+        await ipcRenderer.invoke('readAndWriteFile');
+        // alert('文件已转换，请查看 output.txt');
+    });
+</script>
+</body>
+</html>
